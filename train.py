@@ -268,19 +268,19 @@ if __name__ == "__main__":
     data.setup("fit")
 
     # configure learning rate
-    base_lr = config.model.base_learning_rate
-    if 'accumulate_grad_batches' in lightning_config.trainer:
-        accumulate_grad_batches = lightning_config.trainer.accumulate_grad_batches
-    else:
-        accumulate_grad_batches = 1
-    rank_zero_print(f"accumulate_grad_batches = {accumulate_grad_batches}")
-    lightning_config.trainer.accumulate_grad_batches = accumulate_grad_batches
-    model.learning_rate = base_lr
-    rank_zero_print("++++ NOT USING LR SCALING ++++")
-    rank_zero_print(f"Setting learning rate to {model.learning_rate:.2e}")
+    # base_lr = config.model.base_learning_rate
+    # if 'accumulate_grad_batches' in lightning_config.trainer:
+    #     accumulate_grad_batches = lightning_config.trainer.accumulate_grad_batches
+    # else:
+    #     accumulate_grad_batches = 1
+    # rank_zero_print(f"accumulate_grad_batches = {accumulate_grad_batches}")
+    # lightning_config.trainer.accumulate_grad_batches = accumulate_grad_batches
+    # model.learning_rate = base_lr
+    # rank_zero_print("++++ NOT USING LR SCALING ++++")
+    # rank_zero_print(f"Setting learning rate to {model.learning_rate:.2e}")
 
-    # run training loop
-    if opt.resume and not opt.resume_weights_only:
-        trainer.fit(model, data, ckpt_path=opt.resume)
-    else:
-        trainer.fit(model, data)
+    # # run training loop
+    # if opt.resume and not opt.resume_weights_only:
+    #     trainer.fit(model, data, ckpt_path=opt.resume)
+    # else:
+    #     trainer.fit(model, data)
